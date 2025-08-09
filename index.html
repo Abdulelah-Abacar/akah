@@ -936,7 +936,7 @@
           </div>
           <div
             class="dm-about--image bg_img"
-            data-background="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            data-background="assets/img/akah_hero_1.png"
           ></div>
         </section>
         <!-- about end  -->
@@ -1084,14 +1084,54 @@
             ></div>
           </div>
           <div class="dm-video">
-            <a
-              class="play-btn popup-video"
-              href="https://www.youtube.com/watch?v=cRXm1p-CNyk"
+            <a class="play-btn" href="#" onclick="showVideoPopup(event)"
               ><img src="assets/img/digital-marketing/icon/dm-play.svg" alt=""
             /></a>
             <span class="dm-text">how it works</span>
           </div>
         </section>
+
+        <!-- Video Popup Modal -->
+        <div
+          id="videoPopup"
+          style="
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <div style="position: relative; width: 80%; max-width: 900px">
+            <iframe
+              id="embeddedVideo"
+              src=""
+              style="width: 100%; height: 500px"
+              frameborder="0"
+              allowfullscreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            ></iframe>
+            <button
+              onclick="hideVideoPopup()"
+              style="
+                position: absolute;
+                top: -40px;
+                right: 0;
+                background: transparent;
+                border: none;
+                color: white;
+                font-size: 30px;
+                cursor: pointer;
+              "
+              >×</button
+            >
+          </div>
+        </div>
         <!-- video end -->
 
         <!-- testimonial start -->
@@ -1375,7 +1415,7 @@
         <!-- Team section end  -->
 
         <!-- instragram start -->
-        <section class="instragram pt-130 pb-130">
+        <!-- <section class="instragram pt-130 pb-130">
           <div class="instragram-slider">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -1478,7 +1518,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </section> -->
         <!-- istragram end -->
       </main>
       <!-- main area end  -->
@@ -1601,5 +1641,38 @@
     <script src="assets/js/matter.js"></script>
     <script src="assets/js/throwable.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      function showVideoPopup(event) {
+        event.preventDefault();
+        const popup = document.getElementById("videoPopup");
+        const embeddedVideo = document.getElementById("embeddedVideo");
+
+        // Set the iframe source (use either YouTube or LinkedIn embed URL)
+        // embeddedVideo.src = "https://www.youtube.com/embed/cRXm1p-CNyk?autoplay=1";
+        embeddedVideo.src =
+          "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7358727844903952384?compact=1";
+
+        popup.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Prevent scrolling when popup is open
+      }
+
+      function hideVideoPopup() {
+        const popup = document.getElementById("videoPopup");
+        const embeddedVideo = document.getElementById("embeddedVideo");
+
+        embeddedVideo.src = ""; // Stop the video
+        popup.style.display = "none";
+        document.body.style.overflow = "auto"; // Re-enable scrolling
+      }
+
+      // Close popup when clicking outside the video
+      document
+        .getElementById("videoPopup")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            hideVideoPopup();
+          }
+        });
+    </script>
   </body>
 </html>
