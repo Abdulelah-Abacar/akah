@@ -14573,7 +14573,8 @@ abbr[title] {
   color: var(--color-body);
 }
 
-.footer-logo img {
+.footer-logo img,
+.xb-logo-mobile img {
   filter: brightness(0) saturate(100%) invert(10%) sepia(70%) saturate(6500%) hue-rotate(-2deg);
   width: 80px;
   /* background: linear-gradient(135deg,
@@ -14582,7 +14583,11 @@ abbr[title] {
   width: fit-content; */
 }
 
-.footer-logo .text-logo {
+.xb-logo-mobile img {
+  height: 80px;
+}
+
+.text-logo {
   font-size: 40px;
   color: white;
   vertical-align: middle;
